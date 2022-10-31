@@ -1,0 +1,17 @@
+# generar codigo objeto
+nasm -f elf32 -o shell.o shell.asm
+
+# enlazar haciendo que la seccion data y text sean ejecutables
+ld -N -m elf_i386 -o shell shell.o
+
+#obtener codigo ensamblador de un binario ejecutable
+objdump -d -Mintel shell
+
+# ver las dependencias de un ejecutable
+ldd nombre_ejecutable
+
+# ver secciones del ejecutable
+readelf -S nombre_ejecutable
+
+# ver strings almacenados en .rodata
+readelf --hex-dump=# nombre ejecutable
